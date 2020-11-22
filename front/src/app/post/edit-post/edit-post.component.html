@@ -1,0 +1,66 @@
+<div class="container">
+
+
+
+  <div class="row">
+
+    <!-- Article main content -->
+    <article class="col-sm-9 maincontent top-space">
+      <header class="page-header">
+        <h1 class="page-title"> Add new post</h1>
+      </header>
+
+      <br><br>
+
+      <form class="col-lg-12" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
+        <input type="hidden" class="form-control" id="id" [(ngModel)] ="post.id" name="id"  ngModel>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+     <span class="text-danger"
+           *ngIf="(title.touched || f.submitted) && title.errors?.required">
+                                Name is required
+     </span>
+
+              <input type="text" class="form-control" id="name" name="title" placeholder="name"
+                     [(ngModel)]="post.title" #title = ngModel required>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+                 <span class="text-danger"
+                       *ngIf="(description.touched || f.submitted) && description.errors?.required">
+                         Description is required
+     </span>
+
+              <textarea  class="form-control" id="description" name="description" placeholder="description" [(ngModel)]="post.description" #description=ngModel required>
+              </textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <br/>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" >Valider</button>
+            </div>
+          </div>
+
+        </div>
+
+      </form>
+   <br/>
+    </article>
+    <!-- /Article -->
+
+
+
+  </div>
+</div>

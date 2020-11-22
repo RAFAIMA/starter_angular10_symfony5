@@ -1,0 +1,57 @@
+<!-- container -->
+<div class="container">
+
+
+
+  <div class="row">
+
+    <!-- Article main content -->
+    <article class="col-md-6 col-xs-12 maincontent" style="margin: auto">
+      <header class="page-header">
+        <h1 class="page-title">Sign in</h1>
+      </header>
+
+      <div class="col-md-12  col-sm-12 " style="margin: auto">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h3 class="thin text-center">Sign in to your account</h3>
+
+            <hr>
+            <div *ngIf="submitted && !message" class="text-danger">
+              <p>Bad credentials</p>
+
+            </div>
+
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmitForm()" >
+
+              <div class="top-margin">
+                <label>Username <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="username" formControlName="username">
+              </div>
+              <div class="top-margin">
+                <label>Password <span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="Password" type="password"   formControlName="password" >
+              </div>
+
+              <hr>
+
+              <div class="row">
+                <div class="col-lg-8">
+                  <b><a routerLink="/register">Register</a></b>
+                </div>
+                <div class="col-lg-4 text-right">
+                  <button class="btn btn-action" type="submit" [disabled]="loginForm.invalid">Sign in</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </article>
+    <!-- /Article -->
+
+  </div>
+</div>	<!-- /container -->

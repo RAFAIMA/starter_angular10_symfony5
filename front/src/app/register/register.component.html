@@ -1,0 +1,82 @@
+<div class="container">
+
+
+
+  <div class="row">
+
+    <!-- Article main content -->
+    <article class="col-xs-12 maincontent" style="margin: auto">
+      <header class="page-header">
+        <h1 class="page-title">Registration</h1>
+      </header>
+
+      <div class="col-md-12  col-sm-12 "  style="margin: auto">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h3 class="thin text-center">Register a new account</h3>
+
+            <hr>
+
+            <ul>
+              <li *ngFor="let error of errors">
+                {{ error }}
+              </li>
+            </ul>
+
+
+            <form [formGroup] = "userForm" (ngSubmit)="onSubmit()">
+
+              <div class="top-margin">
+                <label>Email Address <span class="text-danger">*</span></label>
+
+                <div *ngIf="submitted && f.email.errors" class="text-danger">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.email">Email  must be valid</div>
+                </div>
+
+                <input type="email" class="form-control" name="email" formControlName="email">
+              </div>
+
+              <div class="top-margin">
+                <label>Username <span class="text-danger">*</span></label>
+
+                <div *ngIf="submitted && f.username.errors" class="text-danger">
+                  <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+
+                <input type="text" class="form-control" name="username" formControlName="username">
+              </div>
+
+
+              <div class=" top-margin">
+
+                <label>Password <span class="text-danger">*</span></label>
+                  <div *ngIf="submitted && f.password.errors" class="text-danger">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+
+                  </div>
+
+                  <input type="password" class="form-control" name="password" formControlName="password">
+
+
+              </div>
+
+              <hr>
+
+              <div class="row">
+
+                <div class="col-lg-4 text-right">
+                  <button class="btn btn-action" type="submit" >Register</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </article>
+    <!-- /Article -->
+
+  </div>
+</div>	<!-- /container -->

@@ -1,0 +1,47 @@
+
+<!-- container -->
+<div class="container">
+
+  <h2 class="text-center top-space">Posts</h2>
+  <br>
+
+  <div class ="row" *ngIf="(authService.isAuthSubject|async) == true">
+     <div class ="container">
+       <a routerLink="/post/new" class="btn btn-primary" >New Post</a>
+
+     </div>
+  </div>
+  <br/>
+  <br/>
+
+  <div class="row">
+    <div class="container">
+    <div class="col-sm-12">
+
+        <table class="table table-responsive-lg">
+          <tr>
+              <th scope="col">Nom</th>
+              <th scope="col">Description</th>
+              <th *ngIf="(authService.isAuthSubject|async) == true"></th>
+          </tr>
+          <tr *ngFor="let post of posts">
+            <td scope="row"> {{ post.title }} </td>
+            <td scope="row"> {{ post.description }} </td>
+            <td scope="row" *ngIf="(authService.isAuthSubject|async) == true">
+              <a [routerLink]="['/post/edit/',post.id]" class="btn btn-info"> Edit</a>
+            </td>
+            <td scope="row" *ngIf="(authService.isAuthSubject|async) == true">
+              <a [routerLink]="['/post/delete/',post.id]" class="btn btn-danger"> Delete </a>
+            </td>
+
+          </tr>
+
+        </table>
+
+    </div>
+
+  </div> <!-- /row -->
+  </div>
+<br/>
+<br/>
+
