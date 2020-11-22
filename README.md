@@ -24,18 +24,42 @@ A starter CRUD app based on **Angular 10 and symfony5**.
   ```bash
   npm install
   ```
-3. from project root folder go to back folder and :
+3. from project root folder go to back folder (cd Back) and run the following command inside your terminal:
   ```bash
-  composer intsall
+  1. composer install
+  2. I used LexikJWTAuthenticationBundle for JWT (Json Web Token) authentication
+  - So you need to generate the SSL keys:
+  - And do not forget to change 
+      lexik_jwt_authentication.pass_phrase, in .....\back\config\packages\lexik_jwt_authentication.yaml
+  - Documentation of LexikJWTAuthenticationBundle:
+  https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md#getting-started
+      
+3. Change and configure your DATABASE_URL. in back/.env
+4. create your Databse if it did not exist:
+        php bin/console doctrine:database:create
+5. Than migration:
+        php bin/console make:migration
+6. Finally the tables
+ php bin/console doctrine:migrations:migrate
+  ```
+4. Do not forget please to change the path of the back in        "front/src/app/global.ts"
+ ```bash
+  url: 'http://localhost/Use_your_root_project_name/back/public'
   
   ```
-Launch the app with localhost:4200
 
-```
-ng serve --open
-```
+5. Launch the app with localhost:4200
+ ```bash
+  ng serve --open
+  
+  ```
+
+   
+
+6. Register, than sign in, and start all CRUD operations
+
 
 
 ## Authors
 
-* **Mohamed Amine RAFAI ** 
+* ** RAFAI Mohamed Amine ** 
